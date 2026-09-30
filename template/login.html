@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign In</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            background: #eef3f7;
+        }
+
+        /* Purple background */
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 58%;
+            background: linear-gradient(
+                180deg,
+                #bd4f96,
+                #873c9e
+            );
+            z-index: -2;
+        }
+
+        /* White curved area */
+
+        .background::after {
+            content: "";
+            position: absolute;
+            left: -10%;
+            bottom: -180px;
+            width: 120%;
+            height: 350px;
+            background: #eef3f7;
+            border-radius: 50% 50% 0 0;
+        }
+
+        /* Main page */
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Login card */
+
+        .login-box {
+            width: 355px;
+            background: white;
+            border-radius: 20px;
+            padding: 35px 28px 25px;
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.20);
+        }
+
+        /* Logo */
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            font-size: 45px;
+            color: #bd4f96;
+        }
+
+        .logo-name {
+            margin-top: 5px;
+            color: #bd4f96;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* Sign in */
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 500;
+            color: #222;
+            margin-bottom: 28px;
+        }
+
+        /* Input boxes */
+
+        .input-box {
+            width: 100%;
+            height: 54px;
+            margin-bottom: 18px;
+
+            background: #c65398;
+
+            border-radius: 30px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 18px;
+        }
+
+        .input-icon {
+            color: white;
+            font-size: 18px;
+            margin-right: 12px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            color: white;
+            font-size: 15px;
+        }
+
+        .input-box input::placeholder {
+            color: #f4d6e8;
+        }
+
+        /* Forgot password */
+
+        .forgot {
+            text-align: right;
+            margin-top: -5px;
+            margin-bottom: 20px;
+        }
+
+        .forgot a {
+            color: #777;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        /* Login button */
+
+        .login-btn {
+            display: block;
+
+            margin: auto;
+
+            width: 115px;
+            height: 45px;
+
+            border: none;
+            border-radius: 25px;
+
+            background: #bd4f96;
+
+            color: white;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #963879;
+        }
+
+        /* Sign up */
+
+        .signup {
+            text-align: center;
+            margin-top: 18px;
+
+            color: #777;
+            font-size: 13px;
+        }
+
+        .signup a {
+            color: #bd4f96;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Divider */
+
+        .divider {
+            display: flex;
+            align-items: center;
+
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: #ccc;
+        }
+
+        .divider-text {
+            padding: 0 12px;
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* Social icons */
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 13px;
+        }
+
+        .social a {
+            width: 35px;
+            height: 35px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .facebook {
+            background: #4267B2;
+        }
+
+        .dribbble {
+            background: #ea4c89;
+        }
+
+        .twitter {
+            background: #55acee;
+        }
+
+        .instagram {
+            background: #e4405f;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="background"></div>
+
+
+    <div class="page">
+
+        <div class="login-box">
+
+
+            <!-- Logo -->
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    ◉
+                </div>
+
+                <div class="logo-name">
+                    MY SHOP
+                </div>
+
+            </div>
+
+
+            <!-- Title -->
+
+            <h1 class="title">
+                SIGN IN
+            </h1>
+
+
+            <!-- Login form -->
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <!-- Username -->
+
+                <div class="input-box">
+
+                    <span class="input-icon">
+                        ♙
+                    </span>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="User name/Email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="input-box">
+
+                    <span class="input-icon">
+                        🔒
+                    </span>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Forgot password -->
+
+                <div class="forgot">
+
+                    <a href="#">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- Login -->
+
+                <button
+                    type="submit"
+                    class="login-btn">
+
+                    LOGIN
+
+                </button>
+
+
+            </form>
+
+
+            <!-- Sign up -->
+
+            <div class="signup">
+
+                Don't have an account?
+
+                <a href="#">
+                    Sign Up
+                </a>
+
+            </div>
+
+
+            <!-- Divider -->
+
+            <div class="divider">
+
+                <div class="divider-line"></div>
+
+                <div class="divider-text">
+                    Sign In With
+                </div>
+
+                <div class="divider-line"></div>
+
+            </div>
+
+
+            <!-- Social buttons -->
+
+            <div class="social">
+
+                <a href="#" class="facebook">
+                    f
+                </a>
+
+                <a href="#" class="dribbble">
+                    ●
+                </a>
+
+                <a href="#" class="twitter">
+                    t
+                </a>
+
+                <a href="#" class="instagram">
+                    ◎
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
