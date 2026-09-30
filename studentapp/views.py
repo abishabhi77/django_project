@@ -5,5 +5,8 @@ from django.shortcuts import render
 def login_page(request):
     return render(request, 'login.html')
 
+
+def form_page(request):
+    return render(request,'form.html')
 def form_page(request):
     return render(request,'form.html')
